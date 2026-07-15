@@ -403,7 +403,6 @@ h6 {
 }
 
 
-
 /*--------------------------------------------------------------
 # Preloader
 --------------------------------------------------------------*/
@@ -413,7 +412,7 @@ h6 {
   z-index: 999999;
   overflow: hidden;
   background: var(--background-color);
-  transition: all 0.6s ease-out;
+  transition: opacity 0.8s cubic-bezier(0.25, 1, 0.5, 1), visibility 0.8s;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -431,6 +430,12 @@ h6 {
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  transition: transform 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+  transform: scale(1) translateY(0);
+}
+
+#preloader.loaded .loader-container {
+  transform: scale(0.9) translateY(-20px);
 }
 
 .cat-loader {
@@ -594,7 +599,7 @@ h6 {
   border: 3px solid #343a40;
   border-radius: 50%;
   box-shadow: inset -4px -4px 0 rgba(0, 0, 0, 0.15);
-  animation: yarn-bounce 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275) infinite alternate;
+  animation: yarn-bounce 1.2s ease-in-out infinite alternate;
 }
 
 .yarn-ball::after {
@@ -622,7 +627,7 @@ h6 {
 
 .loader-text span {
   display: inline-block;
-  animation: letter-bounce 1.4s infinite ease-in-out;
+  animation: letter-bounce 1.6s infinite ease-in-out;
 }
 
 .loader-text span:nth-child(1) { animation-delay: 0s; }
@@ -677,14 +682,13 @@ h6 {
     transform: translateY(0);
   }
   50% {
-    transform: translateY(-6px);
+    transform: translateY(-4px);
     color: var(--accent-color);
   }
 }
 
-
 /*--------------------------------------------------------------
-# Scroll Top Button*/
+# Scroll Top Button
 --------------------------------------------------------------*/
 .scroll-top {
   position: fixed;

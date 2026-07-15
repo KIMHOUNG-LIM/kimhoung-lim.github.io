@@ -43,11 +43,18 @@
    */
   const preloader = document.querySelector('#preloader');
   if (preloader) {
+    const startTime = Date.now();
     window.addEventListener('load', () => {
-      preloader.classList.add('loaded');
+      const elapsed = Date.now() - startTime;
+      const minDuration = 1500; // minimum duration to display preloader (ms)
+      const delay = Math.max(0, minDuration - elapsed);
+
       setTimeout(() => {
-        preloader.remove();
-      }, 600);
+        preloader.classList.add('loaded');
+        setTimeout(() => {
+          preloader.remove();
+        }, 800); // match transition duration in CSS
+      }, delay);
     });
   }
 
