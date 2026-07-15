@@ -1,10 +1,3 @@
-/**
-* Template Name: iPortfolio
-* Template URL: https://bootstrapmade.com/iportfolio-bootstrap-portfolio-websites-template/
-* Updated: Jun 29 2024 with Bootstrap v5.3.3
-* Author: BootstrapMade.com
-* License: https://bootstrapmade.com/license/
-*/
 
 (function () {
   "use strict";
@@ -51,7 +44,10 @@
   const preloader = document.querySelector('#preloader');
   if (preloader) {
     window.addEventListener('load', () => {
-      preloader.remove();
+      preloader.classList.add('loaded');
+      setTimeout(() => {
+        preloader.remove();
+      }, 600);
     });
   }
 
@@ -259,7 +255,7 @@
 
   if (techFilters.length > 0 && techItems.length > 0) {
     techFilters.forEach(filter => {
-      filter.addEventListener('click', function() {
+      filter.addEventListener('click', function () {
         // Toggle active class on filters
         techFilters.forEach(f => f.classList.remove('filter-active'));
         this.classList.add('filter-active');
@@ -290,7 +286,7 @@
    */
   const detailsLinks = document.querySelectorAll('.portfolio-info .details-link');
   detailsLinks.forEach(link => {
-    link.addEventListener('click', function(e) {
+    link.addEventListener('click', function (e) {
       e.preventDefault();
       const comingSoonModalEl = document.getElementById('comingSoonModal');
       if (comingSoonModalEl) {
